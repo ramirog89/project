@@ -15,6 +15,7 @@ class Server
         int socket;
         int status; 
         int _connect();
+        void _init();
 
     public:
         Server(int port, (char *) sock);
@@ -23,26 +24,4 @@ class Server
         int restart(){}
         int getStatus(){};
         void setStatus(){};
-        void init();
-        
-
 };
-
-Server::Server (int port, (char *) sock) 
-{
-    _port = port;
-    _socket = sock;
-}
-
-
-Server::start(){}
-Server::stop(){}
-Server::restart(){}
-
-Server::getStatus(){}
-Server::setStatus(){}
-
-
-Server::init() { _connect() };
-Server::_connect(){}
-

@@ -2,14 +2,15 @@ namespace Core\Http;
 
 class Request
 {
-
-    public function Request()
-    {}
-
-    public function setRequest()
-    {}
-
-    public function getRequest()
-    {}
-
-}
+    private:
+        char resource;
+        char actionResource;
+        char args;
+    public:
+        Request::Request();
+        Request::setRequest();
+        Request::getRequest();
+        Request::getResource();
+        Request::getActionResource();
+        Request::getArgs();
+};

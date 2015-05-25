@@ -3,50 +3,26 @@
 
 namespace Core;
 
-abstract class Http
+class Http
 {
-    private version;
+    private: 
+        int version;
+        int headers;
+        string body;
+        char method;
+        char user_agent;
+        char host;
+        void _setBody(){};
+        bool _valid_http_request(){};
 
-    private headers;
-
-    private body;
-
-    private method;
-
-    private user_agent;
-
-    private host;
-
-    public function Http
-    (
-        http_message
-    )
-    {
-    // @TODO : VALIDAR EL HTTP MESSAGE::
-        if (this->_is_http_valid(http_message)) {
-            this->request = new Request(http_message);
-            this->response = new Response;
-        }
-    }
-
-    public function setResponse(Response)
-    {
-        // Genera el JSON del resultado del recurso..
-        this->_setBody( Response );
-    }
-
-    public function getResponse()
-    {
-    }
-
-    public function sendHttpResponse()
-    {
-        /**
-         * DESCRIPTION: Genera el mensaje
-         * HTTP/1.1
-         * BODY
-         */
-    }
-
-}
+    public:
+        Request request;
+        Response response;
+        Http::Http(){};
+        Http::setResponse(){};
+        Http::getResponse(){};
+        Http::setRequest(){};
+        Http::getRequest(){};
+        Http::send(){};
+};
 
