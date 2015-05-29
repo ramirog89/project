@@ -1,18 +1,36 @@
+#include <stdlib.h>
+#include <stdio.h>
 #include <iostream>
-#include <http.h>
-#include <front.h>
+
+#include "../src/server.cpp"
+#include "../include/http/handler.h"
+#include "../include/front.h"
 
 using namespace std;
+using namespace Core;
 
 #define DEFAULT_PORT 51517;
 
 int main(int argc, char *argv[])
 {
-    Server server = new Server(
-        DEFAULT_PORT
-    );
+    Server * server;
+    int status;
 
-    status = Server->start();
+    // asi llamo al construct.. cuack ok.. esta bien
+    server = new Core::Server( 51517 );
+
+    cout << "Iniciando server" << endl;
+
+    status = server->start();
+
+    char response;
+
+    if (status) {
+        response = server->listensock();
+
+
+        printf("%s", response);
+/*
 
     switch (status) {
         case server::trunon:
@@ -42,6 +60,9 @@ int main(int argc, char *argv[])
         case server::status_fail:
             return server->getError();
         break;
+*/
     }
+
+    return 0;
     
 }
