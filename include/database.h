@@ -3,12 +3,11 @@ namespace Core {
 class Database
 {
     private:
-        Mysql cnx;
-        connect();
-        disconnect();
-        Database();
+        void connect();
+        void disconnect();
+        void Database();
     public:
-        getInstance(); //devuelve la conexion.. donde hago todo.
+        void getInstance(); //devuelve la conexion.. donde hago todo.
 }
 
 } //namespace Core

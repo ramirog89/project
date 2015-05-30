@@ -35,8 +35,6 @@ int main(int argc, char *argv[])
             // inicializamos el HTTP Handler Lee HTTP y responde HTTP
             http = new Core::Http::Handler( response ); // probablemente sea un singleton
 
-            // aca iria el front... ?..
-            // algo asi como..
             // front = new Front( http->getRequest(), http->getResponse() );
             // rta_recurso_pedido  = front->exec();
             // server_response = http->send( rta_recurso_pedido ); -> pero asi se puede validar.. almeno ¿? nose alpedo igual
