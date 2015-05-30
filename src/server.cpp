@@ -53,12 +53,9 @@ int Server::stop()
     return 1; //status
 }
 
-char Server::listensock()
+char* Server::listensock()
 {
     std::cout << "Comienza la lectura el socket\n";
-
-    int n;
-    char buffer[512]; 
 
     listen(this->_socket, 5);
     this->clilen = sizeof(this->cli_addr); 
@@ -82,16 +79,16 @@ char Server::listensock()
         if (this->_pid == 0) { 
             close(this->_socket); 
 
-            bzero(buffer, 512);
-            n = read(this->_newsock, buffer, 511);
-            if (n < 0) { 
-                perror("ERROR reading from socket"); 
-                exit(1); 
+            if (this->readsock(this->_newsock) < 0) {
+                perror("Error reading socket");
+                exit(1);
             }
 
-            return buffer;
-        }
-        else close(this->_newsock); 
+            return this->_buffer;
+
+            exit(0);
+        } 
+        else close(this->_newsock);
     }
 }
 
@@ -106,25 +103,25 @@ void Server::setStatus(int status)
     this->_status = status;
 }
 
-void Server::read(int sock)
+int Server::getNewSocket()
+{
+    return this->_newsock;
+}
+
+int Server::readsock(int sock)
 {
     int n;
-    char buffer[512];
 
-    bzero(buffer, 512);
-    n = read(sock, buffer, 511);
+    n = read(sock, this->_buffer, sizeof(this->_buffer));
 
-    this->_buffer = buffer;
+    return n;
 }
 
-char Server::getBuffer() // sera un puntero? como e eto.
+void Server::writesock(int sock, std::string buffer)
 {
-    return this->_buffer;
-}
-
-char Server::write(int sock)
-{
-    return write(sock, this->_buffer, sizeof(this->_buffer));
+    // std::string.c_str() devuelve la cadena del string
+    // sizeof(char)* es el cast del std::string.size()
+    write(sock, buffer.c_str(), sizeof(char)*buffer.size());
 }
 
 int Server::getStatus()

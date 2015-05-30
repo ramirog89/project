@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <iostream>
+#include <string>
 
 #include "../src/server.cpp"
 #include "../include/http/handler.h"
@@ -23,13 +24,11 @@ int main(int argc, char *argv[])
 
     status = server->start();
 
-    char response;
 
     if (status) {
-        response = server->listensock();
+        std::string response(server->listensock()); // constructor de char* a string..
 
-
-        printf("%s", response);
+        server->writesock(server->getNewSocket(), response);
 /*
 
     switch (status) {

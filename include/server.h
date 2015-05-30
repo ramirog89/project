@@ -1,6 +1,8 @@
 #ifndef SERVER_H
 #define SERVER_H
 
+#include <string>
+
 namespace Core {
 
 /**
@@ -16,6 +18,7 @@ class Server
         int _newsock; //file descriptor, contiene el socket abierto por el cliente al servidor
         int _status; 
         int _pid; // process identifier
+        char _buffer[512];
         struct sockaddr_in serv_addr, cli_addr;
         socklen_t clilen;
 
@@ -23,10 +26,13 @@ class Server
         Server(int);
         int start(); // sock este mismo crea el socket..
         int stop();
-        char listensock();
+        char* listensock();
         void restart();//aca va stop y start.. guardando en memoria algo?.. ponele
         int getStatus();
         void setStatus(int); // this->_status = status
+        int readsock(int);
+        void writesock(int, std::string);
+        int getNewSocket();
 };
 
 } //namespace Core
