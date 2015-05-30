@@ -6,12 +6,9 @@ using namespace Core;
 
 Http::Handler::Handler(std::string httpmessage)
 {
-    if (httpmessage.length() > 0)
-    {
-        this-> http_response = httpmessage;
-        //this->_request  = new Http::Request::Request(httpmessage);
-        //this->_response = new Http::Response();
-    }
+    this-> http_response = httpmessage;
+    //this->_request  = new Http::Request::Request(httpmessage);
+    //this->_response = new Http::Response();
 }
 
 /*
