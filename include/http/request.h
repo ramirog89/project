@@ -8,7 +8,7 @@ class Request
         char actionResource;
         char args;
     public:
-        Request();
+        Request(std::string);
         void  setRequest();
         void  getRequest();
         char  getResource();

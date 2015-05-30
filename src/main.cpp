@@ -4,8 +4,8 @@
 #include <string>
 
 #include "../src/server.cpp"
-#include "../include/http/handler.h"
-#include "../include/front.h"
+#include "../src/http.cpp"
+//#include "../include/front.h"
 
 using namespace std;
 using namespace Core;
@@ -15,51 +15,39 @@ using namespace Core;
 int main(int argc, char *argv[])
 {
     Server * server;
+    Http::Handler * http;
     int status;
 
-    // asi llamo al construct.. cuack ok.. esta bien
+    // Definimos al Servidor con el puerto que querramos
     server = new Core::Server( 51517 );
 
     cout << "Iniciando server" << endl;
 
+    // Iniciamos el servidor
     status = server->start();
 
-
+    // Si estuvo todo bien
     if (status) {
+        // Ponemos a escuchar al servidor
         std::string response(server->listensock()); // constructor de char* a string..
 
-        server->writesock(server->getNewSocket(), response);
-/*
+        if (response.length() > 0) { 
+            // inicializamos el HTTP Handler Lee HTTP y responde HTTP
+            http = new Core::Http::Handler( response ); // probablemente sea un singleton
 
-    switch (status) {
-        case server::trunon:
-            do {
+            // aca iria el front... ?..
+            // algo asi como..
+            // front = new Front( http->getRequest(), http->getResponse() );
+            // rta_recurso_pedido  = front->exec();
+            // server_response = http->send( rta_recurso_pedido ); -> pero asi se puede validar.. almeno ¿? nose alpedo igual
+            // o... http->send( front->exec() );
 
-                if (server_http_msg != false) {
-                    // Creo un HTTP object con el resultado de la escucha del socket
-                    http    = new Http(
-                        server_http_msg
-                    ); // probablemente sea un singleton
-
-                    // Le paso el HTTP al front para que pueda generar el recurso apartir de la solicitud
-                    front   = new Front(http);
-
-                    // Genero el recurso en JSON y lo envio como respuesta HTTP
-                    r = http->sendHttpRespone(
-                        font->execute()
-                    );
-
-                    // LO ENVIO AL SOCKET...
-                    server->send(r);
-                }
-
-
-            } while(server_http_msg = server->listen();
-        break;
-        case server::status_fail:
-            return server->getError();
-        break;
-*/
+            // el servidor escribe al cliente
+            server->writesock(
+                server->getNewSocket(),
+                http->send() // aca va el HTTP + el body JSON
+            );
+        }
     }
 
     return 0;

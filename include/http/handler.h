@@ -1,5 +1,5 @@
-#include "request.h"
-#include "response.h"
+#ifndef HTTP_HANLDER_H
+#define HTTP_HANDLER_H
 
 namespace Core {
     namespace Http {
@@ -14,19 +14,23 @@ class Handler
         char user_agent;
         char host;
         void _setBody(){};
-        bool _valid_http_request(char http_request){ return (true) ? true : false; };
-        char http_response;
-        Request request;
-        Response response;
+        bool _valid_http_request(char);
+        std::string http_response;
+//        Core::Http::Request _request;
+//        Core::Http::Request _response;
 
     public:
-        Handler(){}; // se inicializan request y response aca new response, new reuqest
-        void setHeaders(){};
-        void setContent(){};
-        void setAgent(){};
-        void buildResponse(){};
-        char send(){ return http_response; };
+        Handler(std::string); // se inicializan request y response aca new response, new reuqest
+        void setHeaders();
+        void setContent();
+        void setAgent();
+        void buildResponse();
+        Http::Request getRequest();
+        Http::Response getResponse();
+        std::string send();
 };
 
     } // namespace Http
 } //namespace Core
+
+#endif

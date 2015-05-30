@@ -26,13 +26,15 @@ class Server
         Server(int);
         int start(); // sock este mismo crea el socket..
         int stop();
-        char* listensock();
         void restart();//aca va stop y start.. guardando en memoria algo?.. ponele
-        int getStatus();
-        void setStatus(int); // this->_status = status
+
+        char* listensock();
         int readsock(int);
         void writesock(int, std::string);
         int getNewSocket();
+
+        int getStatus();
+        void setStatus(int); // this->_status = status
 };
 
 } //namespace Core

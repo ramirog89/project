@@ -1,23 +1,34 @@
-Http::Http()
+#include "../include/http/request.h"
+#include "../include/http/response.h"
+#include "../include/http/handler.h"
+
+using namespace Core;
+
+Http::Handler::Handler(std::string httpmessage)
 {
-    if (_is_http_valid(httpMsg))
+    if (httpmessage.length() > 0)
     {
-        _request  = new Request();
-        _response = new Response();
+        this-> http_response = httpmessage;
+        //this->_request  = new Http::Request::Request(httpmessage);
+        //this->_response = new Http::Response();
     }
 }
 
-Http::getRequest()
+/*
+Http::Request Http::Handler::getRequest()
 {
     return _request;
 }
 
-Http::getResponse()
+Http::Response Http::Handler::getResponse()
 {
     return _response;
 }
+*/
 
-Http::send()
+
+/** Aca se genera el mensaje HTTP **/
+std::string Http::Handler::send()
 {
-    /** Aca se genera el mensaje HTTP **/
+    return http_response;
 }
