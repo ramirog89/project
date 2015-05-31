@@ -1,3 +1,6 @@
+#ifndef HTTP_RESPONSE_H 
+#define HTTP_RESPONSE_H
+
 namespace Core {
     namespace Http {
 
@@ -5,16 +8,18 @@ class Response
 {
     private:
         char _headers[];
-        char _response;
+        std::string _response;
     public:
-        void setResponse(){};
-        char getResponse(){ return _response; };
-        void setHeaders(char header[]){};
-        char* getHeaders(){ return _headers; };
-        void setHeader(char header){};
-        char getHeader(int  header){ return _headers[header]; };
-        char send(){ return _response; };
+        void setResponse();
+        char getResponse();
+        void setHeaders(char*);
+        char* getHeaders();
+        void setHeader(char);
+        char getHeader(int);
+        std::string send(std::string);
 };
 
     } //namespace Http
 } //namespace Core
+
+#endif

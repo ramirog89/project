@@ -50,3 +50,7 @@ httpUrlEncode
 httpRequestMethod (HEAD,POST,PUT,DELETE,GET)
 @type ErrorHandler
 httpSetErrorFunction (ClientError [400-417]|ServerError [500-505])
+
+Para compilar la base de datos:
+g++ -g -Wall -O0 src/database.cpp -I/usr/local/include/ -lpqxx -lpq -o data
+

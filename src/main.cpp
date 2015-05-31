@@ -5,7 +5,7 @@
 
 #include "../src/server.cpp"
 #include "../src/handler.cpp"
-//#include "../include/front.h"
+#include "../src/front.cpp"
 
 using namespace std;
 using namespace Core;
@@ -16,6 +16,7 @@ int main(int argc, char *argv[])
 {
     Server * server;
     Http::Handler * http;
+    Front * front;
     int status;
 
     // Definimos al Servidor con el puerto que querramos
@@ -35,7 +36,11 @@ int main(int argc, char *argv[])
             // inicializamos el HTTP Handler Lee HTTP y responde HTTP
             http = new Core::Http::Handler( response ); // probablemente sea un singleton
 
-            // front = new Front( http->getRequest(), http->getResponse() );
+            front = new Front(
+                *http->getRequest(), 
+                *http->getResponse()     
+            );
+
             // rta_recurso_pedido  = front->exec();
             // server_response = http->send( rta_recurso_pedido ); -> pero asi se puede validar.. almeno ¿? nose alpedo igual
             // o... http->send( front->exec() );
@@ -43,7 +48,9 @@ int main(int argc, char *argv[])
             // el servidor escribe al cliente
             server->writesock(
                 server->getNewSocket(),
-                http->send() // aca va el HTTP + el body JSON
+                http->send( 
+	            front->exec() 
+		) // aca va el HTTP + el body JSON
             );
         }
     }

@@ -1,26 +1,30 @@
-namespace Core {
+#ifndef CORE_FRONT_H
+#define CORE_FRONT_H
 
-using namespace Http;
+namespace Core {
 
 class Front
 {
     private:
-        Http::Handler* _httpHandler;
-        int _controller;
-        int _action;
-        int _args;
-        void _init(){};
+        Http::Request* _request;
+        Http::Response* _response;
+        char _controller;
+        char _action;
+        char _args;
+        void _init();
         int _status; // modificado por el exec, el status de la ejecucion
 
     public:
-        Front(){};
-        void setController(char controller){};
-        char getController(){ return this->_controller; };
-        void setAction(char action){};
-        char getAction(){ return this->_action; };
-        void setArgs(char args[]){};
-        char getArgs(){ return this->_args; };
-        int  exec(){ return _httpHandler->send(); };
+        Front(Http::Request, Http::Response);
+        void setController(char);
+        char getController();
+        void setAction(char);
+        char getAction();
+        void setArgs(char);
+        char getArgs();
+        std::string exec();
 };
 
 } //namespace Core
+
+#endif

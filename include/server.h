@@ -1,5 +1,5 @@
-#ifndef SERVER_H
-#define SERVER_H
+#ifndef CORE_SERVER_H
+#define CORE_SERVER_H
 
 #include <string>
 

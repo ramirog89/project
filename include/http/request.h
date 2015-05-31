@@ -1,20 +1,24 @@
+#ifndef HTTP_REQUEST_H
+#define HTTP_REQUEST_H
+
 namespace Core {
     namespace Http {
 
 class Request
 {
     private:
-        char resource;
-        char actionResource;
-        char args;
+        char _resource;
+        char _actionResource;
+        char _args;
+        std::string _http_message;
     public:
         Request(std::string);
-        void  setRequest();
-        void  getRequest();
-        char  getResource();
-        char  getActionResource();
-        char* getArgs(char args[]);
+        char getResource();
+        char getActionResource();
+        char getArgs();
 };
 
     } //namespace Http
 } //namespace Core
+
+#endif

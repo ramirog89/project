@@ -1,52 +1,75 @@
-Front::Front(Http http)
+#include <string>
+
+#include "../include/http/request.h"
+#include "../include/http/response.h"
+#include "../include/front.h"
+
+using namespace Core;
+
+Front::Front(
+    Http::Request request, 
+    Http::Response response)
 {
-    _http = http;
-    _init( http->getRequest() );
+    this->_request  = &request;
+    this->_response = &response;
+
+    this->_init();
 }
 
-Front::_init()
+void Front::_init()
 {
-    request = _http->getRequest();
-    setController( request.getResource() );
-    setAction( request.getActionResource() );
-    setArgs( request.getArgs() );
+    this->setController( 
+        this->_request->getResource()
+    );
+    this->setAction( 
+        this->_request->getActionResource() 
+    );
+    this->setArgs( 
+        this->_request->getArgs() 
+    );
 }
 
-Front::execute()
+std::string Front::exec()
 {
+    std::string e("Esto es el output");
+    
+
+    return e;
+/*
     return exec(
         new {getController()},
         {getAction()},
         getArgs(),
     )
+*/
 }
 
-Front::setController(char controller)
+void Front::setController(char controller)
 {
-    _controller = controller;
+    this->_controller = controller;
 }
 
-Front::setAction(char action)
+void Front::setAction(char action)
 {
-    _action = action;
+    this->_action = action;
 }
 
-Front::setArgs(char args)
+void Front::setArgs(char args)
 {
-    _args = args;
+    this->_args = args;
 }
 
-Front::getController()
+char Front::getController()
 {
     return _controller;
 }
 
-Front::getAction()
+char Front::getAction()
 {
     return _action;
 }
 
-Front::getArgs()
+char Front::getArgs()
 {
     return _args;
 }

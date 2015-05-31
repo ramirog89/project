@@ -13,11 +13,10 @@ class Handler
         char method;
         char user_agent;
         char host;
-        void _setBody(){};
+        void _setBody();
         bool _valid_http_request(char);
-        std::string http_response;
-//        Core::Http::Request _request;
-//        Core::Http::Request _response;
+        Request* _request;
+        Response* _response;
 
     public:
         Handler(std::string); // se inicializan request y response aca new response, new reuqest
@@ -25,9 +24,9 @@ class Handler
         void setContent();
         void setAgent();
         void buildResponse();
-        Http::Request getRequest();
-        Http::Response getResponse();
-        std::string send();
+        Request* getRequest();
+        Response* getResponse();
+        std::string send(std::string);
 };
 
     } // namespace Http

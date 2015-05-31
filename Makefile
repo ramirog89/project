@@ -1,21 +1,25 @@
 CC = g++
-CFLAGS = -Wall -g
+CFLAGS = -Wall -g -O0
 LDFLAGS = -lm
 
-request.o : request.c request.h     
-    ${CC} ${CFLAGS} -c request.c
+#DEP = $(OBJ:%.o=%.d)
 
-response.o : response.c response.h     
-    ${CC} ${CFLAGS} -c request.c
+# El -c dice.. Solo compila... no linkees.. porque cuando linkea, no encuentra main en esta clase
+# {@see: http://www.linuxquestions.org/questions/programming-9/c-compiling-single-class-without-a-main-358189/#post1825895}
+myprogram : src/main.cpp request.o response.o handler.o front.o server.o
+	${CC} ${CFLAGS} src/main.cpp -o bin/myprogram ${LDFLAGS} build/request.o build/response.o
 
-http.o : http.c http.h request.h response.h   
-    ${CC} ${CFLAGS} -c http.c
+server.o : src/server.cpp
+	${CC} ${CFLAGS} -c src/server.cpp -o build/server.o
 
-server.o : server.c server.h http.h
-    ${CC} ${CFLAGS} -c server.c
+request.o : src/request.cpp
+	${CC} ${CFLAGS} -c src/request.cpp -o build/request.o 
 
-main.o : main.c server.o http.o request.o response.o
+response.o : src/response.cpp
+	${CC} ${CFLAGS} -c src/response.cpp -o build/response.o
 
-server : main.o server.o http.o request.o response.o
-    ${CC} ${CFLAGS} main.o server.o http.o request.o response.o ${LDFLAGS} -o server
-    
+handler.o : src/handler.cpp 
+	${CC} ${CFLAGS} -c src/handler.cpp -o build/handler.o 
+
+front.o : src/front.cpp include/front.h 
+	${CC} ${CFLAGS} -c src/front.cpp -o build/front.o 
