@@ -41,20 +41,14 @@ int main(int argc, char *argv[])
                 *http->getResponse()     
             );
 
-            // rta_recurso_pedido  = front->exec();
-            // server_response = http->send( rta_recurso_pedido ); -> pero asi se puede validar.. almeno ¿? nose alpedo igual
-            // o... http->send( front->exec() );
-
-            // el servidor escribe al cliente
-            server->writesock(
-                server->getNewSocket(),
+            server->writesock( // ESTO ESCRIBE EL BUFFER EN EL SOCKET 
+                server->getNewSocket(), // SOCKET DEL CLIENTE
                 http->send( 
-	            front->exec() 
-		) // aca va el HTTP + el body JSON
+                    front->exec() // ACA VA EL JSON
+                ) // ACA VA EL HTTP
             );
         }
     }
 
     return 0;
-    
 }
