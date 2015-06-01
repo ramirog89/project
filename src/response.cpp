@@ -3,8 +3,13 @@
 
 using namespace Core;
 
-std::string Http::Response::send(std::string json)
+void Http::Response::setBody(std::string body)
 {
-    this->_response = json;
-    return this->_response;
+    this->_body = body;
 }
+
+std::string Http::Response::getBody()
+{
+    return this->_body;
+}
+

@@ -32,20 +32,29 @@ int main(int argc, char *argv[])
         // Ponemos a escuchar al servidor
         std::string response(server->listensock()); // constructor de char* a string..
 
-        if (response.length() > 0) { 
+        // Quedaria mas proligo si aca se pone el while?...     
+        // y el listen sock queda solo como void?..
+
+        if (!response.empty()) { 
             // inicializamos el HTTP Handler Lee HTTP y responde HTTP
             http = new Core::Http::Handler( response ); // probablemente sea un singleton
 
+
+            // Se instancia el front si el http request fue valido ...
             front = new Front(
                 *http->getRequest(), 
                 *http->getResponse()     
             );
 
+            /**
+             * Aca se sobre carga al objeto REsponse... 
+             * si encontro el recurso, si tuvo resultado todo en el json
+             */
+            front->exec(); // ACA VA EL JSON
+
             server->writesock( // ESTO ESCRIBE EL BUFFER EN EL SOCKET 
                 server->getNewSocket(), // SOCKET DEL CLIENTE
-                http->send( 
-                    front->exec() // ACA VA EL JSON
-                ) // ACA VA EL HTTP
+                http->send() // ACA VA EL HTTP CON EL BODY DEL RESPONSE [JSON]
             );
         }
     }

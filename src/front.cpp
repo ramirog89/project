@@ -29,12 +29,17 @@ void Front::_init()
     );
 }
 
-std::string Front::exec()
+void Front::exec()
 {
-    std::string e("Esto es el output");
-    
 
-    return e;
+    /**
+     * {@see: http://www.cs.sjsu.edu/~pearce/modules/lectures/oop/types/reflection/prototype.htm}
+     * Quizas sea bueno crear un prototipo para los controladores ¿?.. salvo que el uso de using Namespace ::object::method funcione de pelos ¿?
+     * {@see: http://stackoverflow.com/questions/4189682/calling-an-external-function-from-a-class-method}
+    */
+    this->_output = "{ 'users' : [{ 'email' : 'ramirog89@gmail.com', 'password' : 'peperoni', 'user_id' : '1' }] }";
+
+    this->_response->setBody(this->_output);
 /*
     return exec(
         new {getController()},

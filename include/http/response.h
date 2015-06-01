@@ -8,7 +8,7 @@ class Response
 {
     private:
         char _headers[];
-        std::string _response;
+        std::string _body;
     public:
         void setResponse();
         char getResponse();
@@ -16,7 +16,8 @@ class Response
         char* getHeaders();
         void setHeader(char);
         char getHeader(int);
-        std::string send(std::string);
+        void setBody(std::string);
+        std::string getBody();
 };
 
     } //namespace Http

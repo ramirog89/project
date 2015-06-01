@@ -13,6 +13,7 @@ class Front
         char _args;
         void _init();
         int _status; // modificado por el exec, el status de la ejecucion
+        std::string _output;
 
     public:
         Front(Http::Request, Http::Response);
@@ -22,7 +23,7 @@ class Front
         char getAction();
         void setArgs(char);
         char getArgs();
-        std::string exec();
+        void exec();
 };
 
 } //namespace Core

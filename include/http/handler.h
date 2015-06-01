@@ -8,12 +8,10 @@ class Handler
 {
     private: 
         int version;
-        int headers;
-        char body;
+        std::string _headers;
         char method;
         char user_agent;
         char host;
-        void _setBody();
         bool _valid_http_request(char);
         Request* _request;
         Response* _response;
@@ -26,7 +24,8 @@ class Handler
         void buildResponse();
         Request* getRequest();
         Response* getResponse();
-        std::string send(std::string);
+        std::string sendHeaders();
+        std::string send();
 };
 
     } // namespace Http
