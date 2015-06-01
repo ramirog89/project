@@ -4,12 +4,16 @@
 namespace Core {
     namespace Http {
 
+/**
+ * {@see: http://www.w3.org/Protocols/rfc2616/rfc2616-sec6.html}
+ */
 class Response
 {
     private:
         char _headers[];
 		int  _status;
         std::string _body;
+		time_t _response_time;
     public:
         void setHeader(char);
         char getHeader(int);
@@ -17,6 +21,8 @@ class Response
         std::string getBody();
 		void setStatus(int);
         int  getStatus();
+		
+		std::string getTime();
 };
 
     } //namespace Http

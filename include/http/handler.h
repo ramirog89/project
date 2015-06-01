@@ -7,23 +7,13 @@ namespace Core {
 class Handler
 {
     private: 
-        float version = 1.1;
-        const char* method;
-        const char* user_agent;
-        const char* host;
-		
         bool _valid_http_request();
 
         Request* _request;
         Response* _response;
 
     public:
-        Handler(std::string); // se inicializan request y response aca new response, new reuqest
-        
-		void setVersion(float);
-		void setUserAgent(const char*);
-		void setMethod(const char*);
-		void setHost(const char*);
+        Handler(std::string); // init request y response.
 		
         Request* getRequest();
         Response* getResponse();

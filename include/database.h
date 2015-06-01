@@ -9,14 +9,15 @@ class Database
 		// 2 formas diferentes de hacer singleton..
 		//static Database* instance; // singleton instance
 		
-        void _connect();
-        void _disconnect();
+        void _connect(); // podria retronar el cnx
+        void _disconnect(); // podria retornar true o false..
 		
 		// Singleton features
         Database(); // Constructor privado
 		// C++11 igualar a delete = delete (borra los metodos)
 		Database(Database const&); // Copiar constructor es privado = delete
 		void operator=(Database const&); // asignar operador es privado = delete
+		
     public:
         //static Database* getInstance(); // singleton access
 		static Database& getInstance()

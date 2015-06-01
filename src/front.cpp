@@ -18,20 +18,27 @@ Front::Front(
 
 void Front::_init()
 {
-    this->setController( 
-        this->_request->getResource()
+	/** 
+	 * Obtengo la URI del request y defino
+	 * el recurso/controller
+	 * el action
+	 * los argumentos del mismo
+	 */
+	std::string original_uri = this->_request->getRequestUri();
+    
+	this->setController( 
+        original_uri.find(0, 'primeraparte')
     );
     this->setAction( 
-        this->_request->getActionResource() 
+        original_uri.find(10, 'action')
     );
     this->setArgs( 
-        this->_request->getArgs() 
+        original_uri.find(30, 'lodemas')
     );
 }
 
 void Front::exec()
 {
-
     /**
      * {@see: http://www.cs.sjsu.edu/~pearce/modules/lectures/oop/types/reflection/prototype.htm}
      * Quizas sea bueno crear un prototipo para los controladores ¿?.. salvo que el uso de using Namespace ::object::method funcione de pelos ¿?
