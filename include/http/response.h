@@ -8,16 +8,15 @@ class Response
 {
     private:
         char _headers[];
+		int  _status;
         std::string _body;
     public:
-        void setResponse();
-        char getResponse();
-        void setHeaders(char*);
-        char* getHeaders();
         void setHeader(char);
         char getHeader(int);
         void setBody(std::string);
         std::string getBody();
+		void setStatus(int);
+        int  getStatus();
 };
 
     } //namespace Http

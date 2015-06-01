@@ -4,7 +4,7 @@
 
 using namespace Core;
 
-Http::Request::Request(std::string mensaje)
+Http::Request::Request(std::string uri)
 {
     // string::regex o algoasi.. nose
     // aca tengo que hacer la magia de explodear al get..
@@ -14,10 +14,10 @@ Http::Request::Request(std::string mensaje)
     // todos los ejemplos de el string.compare, string.substr
     // string.find.. etc con esas funciones.. saco todo ñaca ñaca
 
-    this->_http_message = mensaje;
-    this->_resource = 'a';
-    this->_actionResource = 'b';
-    this->_args = 'c';
+    this->_uri = uri;
+    this->_resource = 'a'; // recurso del uri
+    this->_actionResource = 'b'; // action del uri
+    this->_args = 'c'; // params del uri
 }
 
 char Http::Request::getResource()

@@ -1,8 +1,9 @@
 #include "../include/controller.h"
+#include "../include/database.h"
 
 using namespace Core;
 
-Core::Controller()
+Controller::Controller()
 {
     this->_database = Database::getInstance();
 }

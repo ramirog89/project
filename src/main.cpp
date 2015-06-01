@@ -39,7 +39,6 @@ int main(int argc, char *argv[])
             // inicializamos el HTTP Handler Lee HTTP y responde HTTP
             http = new Core::Http::Handler( response ); // probablemente sea un singleton
 
-
             // Se instancia el front si el http request fue valido ...
             front = new Front(
                 *http->getRequest(), 

@@ -10,7 +10,7 @@ class Request
         char _resource;
         char _actionResource;
         char _args;
-        std::string _http_message;
+        std::string _uri;
     public:
         Request(std::string);
         char getResource();

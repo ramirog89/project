@@ -5,15 +5,15 @@ namespace Core {
 
 class Controller 
 {
-    private:
+    protected:
         Database* _database;
     public:
-        Controller;
+        Controller();
         virtual int post();
         virtual int put();
         virtual int delete();
-        virtual int get();
-        virtual int head();
+        virtual char* get(); //esto podria ser un vector
+        virtual char* head();//esto podria ser un vector
 }
 
 } //namespace Core

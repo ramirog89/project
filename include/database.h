@@ -3,11 +3,29 @@ namespace Core {
 class Database
 {
     private:
-        void connect();
-        void disconnect();
-        void Database();
+		// {@see: http://stackoverflow.com/questions/1008019/c-singleton-design-pattern/1008289#1008289}
+		// {@see: http://stackoverflow.com/questions/270947/can-any-one-provide-me-a-sample-of-singleton-in-c/271104#271104}
+		// {@see: http://www.yolinux.com/TUTORIALS/C++Singleton.html}
+		// 2 formas diferentes de hacer singleton..
+		//static Database* instance; // singleton instance
+		
+        void _connect();
+        void _disconnect();
+		
+		// Singleton features
+        Database(); // Constructor privado
+		// C++11 igualar a delete = delete (borra los metodos)
+		Database(Database const&); // Copiar constructor es privado = delete
+		void operator=(Database const&); // asignar operador es privado = delete
     public:
-        void getInstance(); //devuelve la conexion.. donde hago todo.
+        //static Database* getInstance(); // singleton access
+		static Database& getInstance()
+		{
+			static Database INSTANCE;
+			return INSTANCE;
+		}
+		
+		pqxx::result query(std::string);
 }
 
 } //namespace Core
