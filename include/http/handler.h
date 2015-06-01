@@ -7,7 +7,7 @@ namespace Core {
 class Handler
 {
     private: 
-        bool _valid_http_request();
+        bool _valid_http_request(); // aca iria un string.compare?.. va esto?
 
         Request* _request;
         Response* _response;

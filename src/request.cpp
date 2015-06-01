@@ -4,7 +4,7 @@
 
 using namespace Core;
 
-Http::Request::Request(std::string uri)
+Http::Request::Request(std::string httpmessage)
 {
 	/**
 	 * Aca estaria bueno ya parsear y tener todo..
@@ -20,19 +20,13 @@ Http::Request::Request(std::string uri)
 	 * y obtener los datos que quiero
 	 */
 
-
-    // string::regex o algoasi.. nose
-    // aca tengo que hacer la magia de explodear al get..
-    // y traer al resource, action y args.. y whiala..
-
     // {@see: http://www.freeinfosociety.com/pdfs/computers/12strings.pdf?phpMyAdmin=af0f6b4465fe3f904426eaeb3dc0e3fa&phpMyAdmin=Kb2XHnhmhTctZwPmOqks7zD3-sc}
     // todos los ejemplos de el string.compare, string.substr
     // string.find.. etc con esas funciones.. saco todo ñaca ñaca
 
-    this->_uri = uri; // el original.. solo para mantenerlo
-    this->_resource = 'a'; // recurso del uri
-    this->_actionResource = 'b'; // action del uri
-    this->_args = 'c'; // params del uri
+	// {@see: http://www.cplusplus.com/reference/string/string/substr/}
+	std::size_t uri_pos = httpmessage.find("uri");
+    this->_request_uri = httpmessage.substr(uri_pos); // el original.. solo para mantenerlo
 }
 
 std::string Http::Request::getRequestUri()
