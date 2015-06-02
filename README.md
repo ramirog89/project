@@ -59,23 +59,86 @@ g++ -g -Wall -O0 src/database.cpp -I/usr/local/include/ -lpqxx -lpq -o data
 * REST API * | {@link: http://www.restapitutorial.com/lessons/restquicktips.html}
 ------------
 /users
+
 /users/:id
+
 /users/:id/marks
+
 /users/:id/marks/:id
+
 /users/:id/notifications
+
 /users/:id/notifications/:id
+
 /users/:id/messages
 
+/users/:id/events
+
+/users/:id/events/:id
+
+/users/:id/events/:id/participants
+
+
 /marks
+
 /marks/:id
 
+
 /notifications
+
 /notifications/:id
 
+
 /events
+
 /events/:id
 
+/events/:id/participants
 
+
+
+Para los requests Compuestos como por ejemplo Users
+Se va a retornar como resultado de un metodo que devuelva algo,
+Se va a tener en cuenta primero... si vinieron argumentos, el 1er argumentos
+sera el id del recurso pedido, todo lo demás será tratado como par de 
+llave y valor (entity=>value) y esto, simplemente modificara la query.
+Si pido el recurso Usuario, siempre va a traer el usuario, todo lo demás
+será tratado como Left join, o como inner join, o se hara una query en partiuclar con los ids
+anteriores y se pusheara al array del resultado.
+ejemplo
+
+
+/users/:id/marks
+
+Traera como resultado algo del tipo:
+
+{
+
+  UserObject : User =>
+  
+  {
+  
+	//atributos del usuario
+	
+	Array MarksObject => {
+	
+		{
+		
+			MarkObject => { id : 1}
+			
+		},
+		
+		{
+		
+			MarkObject => { id : 2}
+			
+		}
+	
+	}
+	
+  }
+  
+}
 
 
 
