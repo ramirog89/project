@@ -36,6 +36,7 @@ std::string Http::Handler::send()
 	 * Date: (O->RESPONSE->getTime())
      * Content-Type: application/json (por lo pronto esta hardcodeado)
 	 * Content-Length: O->RESPONSE->getBody().length()
+	 * Allow: GET, PUT, DELETE, POST, HEAD
 	 * \n\r
 	 * O->RESPONSE->getBody()
 	 *******************************/

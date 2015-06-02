@@ -10,7 +10,7 @@ namespace Core {
 class Request
 {
     private:
-        float version = 1.1;
+        float version;
         const char* method;
         const char* user_agent;
         const char* host;
@@ -24,6 +24,8 @@ class Request
 		void setMethod(const char*);
 		void setHost(const char*);
 		void setRequestUri(std::string);
+		
+		const char* getMethod();
 		
 		std::string getRequestUri();
 };

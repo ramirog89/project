@@ -54,3 +54,29 @@ httpSetErrorFunction (ClientError [400-417]|ServerError [500-505])
 Para compilar la base de datos:
 g++ -g -Wall -O0 src/database.cpp -I/usr/local/include/ -lpqxx -lpq -o data
 
+-----------------------------------------------------
+
+* REST API * | {@link: http://www.restapitutorial.com/lessons/restquicktips.html}
+------------
+/users
+/users/:id
+/users/:id/marks
+/users/:id/marks/:id
+/users/:id/notifications
+/users/:id/notifications/:id
+/users/:id/messages
+
+/marks
+/marks/:id
+
+/notifications
+/notifications/:id
+
+/events
+/events/:id
+
+
+
+
+
+

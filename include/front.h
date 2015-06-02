@@ -8,11 +8,13 @@ class Front
     private:
         Http::Request* _request;
         Http::Response* _response;
+		
         char _controller;
         char _action;
         char _args;
+		
         void _init();
-        int _status; // modificado por el exec, el status de la ejecucion
+		
         std::string _output;
 
     public:

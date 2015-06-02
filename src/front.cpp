@@ -43,17 +43,46 @@ void Front::exec()
      * {@see: http://www.cs.sjsu.edu/~pearce/modules/lectures/oop/types/reflection/prototype.htm}
      * Quizas sea bueno crear un prototipo para los controladores ¿?.. salvo que el uso de using Namespace ::object::method funcione de pelos ¿?
      * {@see: http://stackoverflow.com/questions/4189682/calling-an-external-function-from-a-class-method}
+	 * Me parece que ésto es lo que más sentido tiene:
+	 * {@link: http://www.cs.sjsu.edu/~pearce/modules/lectures/oop/types/reflection/prototype.htm}
+	 * Armar un Prototype Pattern de Controller para instanciarlo Dinamicamente.
+	 * Entonces quedaria algo asi como:
+
+	 Controller* controller;
+   	 controller = Controller::makeController(this->_getController());
+	 
+	 Nota : C++ no permite "Reflection" {@see: http://www.garret.ru/cppreflection/docs/reflect.html}
+		esto significa que no puedo hacer controller->*this->_getAction() 
+		asi como si nada.. vamos a tener que implementarlo
+		ver: {@link: http://stackoverflow.com/questions/10668363/how-to-pass-method-name-in-variable}
+		
+		Aca en caso de no tener el recurso, puedo poner
+		Metodo no implementado, nose.. tengo que ver bien eso si tiene que ver
+		con el httpmetod o el recurso implementado mio. (que es lo standard?)
+		
+	 switch(this->_request->getMethod()) // esto no esta nada mal tampoco
+	 {
+		case 'POST':
+			this->_output = (*controller)->post(this->_getArgs());
+		break;
+		case 'PUT':
+			this->_output = (*controller)->put(this->_getArgs());
+		break;
+		case 'DELETE':
+			this->_output = (*controller)->delete(this->_getArgs());
+		break;
+		case 'HEAD':
+			this->_output = (*controller)->head(this->_getArgs());
+		break;
+		default:
+			this->_output = (*controller)->get(this->_getArgs());
+		break;
+	 }
     */
+	
     this->_output = "{ 'users' : [{ 'email' : 'ramirog89@gmail.com', 'password' : 'peperoni', 'user_id' : '1' }] }";
 
     this->_response->setBody(this->_output);
-/*
-    return exec(
-        new {getController()},
-        {getAction()},
-        getArgs(),
-    )
-*/
 }
 
 void Front::setController(char controller)
