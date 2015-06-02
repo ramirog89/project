@@ -11,9 +11,15 @@
  * con lo que no sea int.. ??
  * para crear la query, almenos por ahora seria asi
  */
-User::get()
+// Esto deberia recibir un array del tipo
+// keynameattr => value
+std::vector<char> User::get()
 {
-	pqxx::result r = this->_database->query($sql);
+	std::string sqlStatement = 
+		"SELECT *"
+		"FROM users";
+				   
+	return this->_database->query(sqlStatement);
 }
 
 User::head()

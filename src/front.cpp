@@ -51,7 +51,20 @@ void Front::exec()
 	 Controller* controller;
    	 controller = Controller::makeController(this->_getController());
 	 
-	 Nota : C++ no permite "Reflection" {@see: http://www.garret.ru/cppreflection/docs/reflect.html}
+	 *Reflection : {@see: http://www.garret.ru/cppreflection/docs/reflect.html}
+		Es la capacidad de obtener la informacion de un objeto en tiempo de ejecucion.
+		Ver su tipo, sus metodos de invocacion, sus campos, esto es requerido cuando se quiere
+		implementar codigo generico el cual pueda trabajar con tipos no conocidos de los objetos
+		en el momento que se instancian.
+		Hay muchas tareas en las que la refleccion puede ser usada: 
+			- Invocar metodos remotos
+			- Serializacion
+			- Dump de un objeto
+			- Interfaz de una base de datos
+		Como funciona? : Dado un objeto, se pregunta su tipo,
+			Como resultado, obtenemos un "descriptor de clase" que provee la informacino acerca de sus metodos y campos.
+		
+	 Nota : C++ no permite "Reflection"
 		esto significa que no puedo hacer controller->*this->_getAction() 
 		asi como si nada.. vamos a tener que implementarlo
 		ver: {@link: http://stackoverflow.com/questions/10668363/how-to-pass-method-name-in-variable}

@@ -47,11 +47,42 @@ std::string Http::Handler::send()
 	"Content-Length: 92\n" // aca va el body.length()
 	"\r\n"
 	"{ 'users' : [{ 'email' : 'ramirog89@gmail.com', 'password' : 'peperoni', 'user_id' : '1' }] }"
-	); // aca deberia ir el body.str()
+	); // aca deberia ir el this->_toJson(body.str())
 
     std::cout << output << std::endl;
 
     //output.insert(output.length(), this->_response->getBody());
 
     return output;
+}
+
+std::vector<json::value> Http::Handler::_toJson(std::vector<char> array)
+{
+    return _response;
+}
+
+
+std::vector<json::value> Http::Handler::_toJson(pqxx::result result)
+{
+	std::vector<res::json::value> arrayResult;
+	
+	for (
+      pqxx::result::const_iterator row = result.begin();
+      row != result.end();
+      ++row)
+    {
+		res::json::value r;
+		
+		// ver como iterar campo y valor, also asi como un foreach o [0] y [1]
+		r["user_id"] = row["user_id"];
+		r["email"] = row["email"];
+		
+        arrayResult.push_back(r);
+    }
+	
+	res::json::value jsonBodyResponse;
+	
+	jsonBodyResponse["response"] = res::json::value::array(arrayResult);
+	
+	return jsonBodyResponse;
 }

@@ -22,11 +22,12 @@ class Database
         //static Database* getInstance(); // singleton access
 		static Database& getInstance()
 		{
-			static Database INSTANCE;
+			stati	c Database INSTANCE;
 			return INSTANCE;
 		}
 		
 		pqxx::result query(std::string);
+		//std::vector<json::value> fetchResult();
 }
 
 } //namespace Core
