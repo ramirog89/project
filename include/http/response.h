@@ -10,6 +10,7 @@ namespace Core {
 class Response
 {
     private:
+        char _statusMessages[];
         char _headers[];
 		int  _status;
         std::string _body;

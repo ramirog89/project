@@ -1,5 +1,5 @@
 #include <string>
-#include <time>
+#include <time.h>
 #include "../include/http/response.h"
 
 using namespace Core;
