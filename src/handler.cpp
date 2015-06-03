@@ -56,13 +56,7 @@ std::string Http::Handler::send()
     return output;
 }
 
-std::vector<json::value> Http::Handler::_toJson(std::vector<char> array)
-{
-    return _response;
-}
-
-
-std::vector<json::value> Http::Handler::_toJson(pqxx::result result)
+json::value Http::Handler::_toJson(pqxx::result result)
 {
 	std::vector<res::json::value> arrayResult;
 	

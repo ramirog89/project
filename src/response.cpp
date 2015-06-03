@@ -30,5 +30,7 @@ int Http::Response::getStatus()
  */
 std::string Http::Response::getTime()
 {
-	return ctime(time(&this->_response_time));
+    time( &this->_response_time );
+
+	return ctime( &this->_response_time );
 }

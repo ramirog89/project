@@ -4,6 +4,8 @@
 namespace Core {
     namespace Http {
 
+typedef 
+
 class Handler
 {
     private: 
@@ -12,7 +14,7 @@ class Handler
         Request* _request;
         Response* _response;
 		
-		std::vector<json::value> _toJson(std::vector<char>)
+		json::value _toJson(std::vector<char>)
 
     public:
         Handler(std::string); // init request y response.
