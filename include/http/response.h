@@ -4,18 +4,13 @@
 namespace Core {
     namespace Http {
 
-struct statusMessage {
-	int status;
-	const char* message;
-}
-	
 /**
  * {@see: http://www.w3.org/Protocols/rfc2616/rfc2616-sec6.html}
  */
 class Response
 {
     private:
-        char _statusMessages[7] = {
+        std::vector<std::pair<int, std::string>> _statusMessages[7] = {
 			{200, "OK"},
 			{302, "Temprary redirect"},
 			{403, "Forbidden"},
@@ -28,7 +23,7 @@ class Response
 		
         char _headers[];
 		int  _status;
-        std::string _body;
+		std::string _body;
 		time_t _response_time;
     public:
         void setHeader(char);
@@ -37,7 +32,6 @@ class Response
         std::string getBody();
 		void setStatus(int);
         int  getStatus();
-		
 		std::string getTime();
 };
 
