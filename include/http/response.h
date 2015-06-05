@@ -21,7 +21,7 @@ class Response
 			{505, "HTTP Version not supported"}
 		};
 		
-        char _headers[];
+        std::vector<int> _headers[];
 		int  _status;
 		std::string _body;
 		time_t _response_time;

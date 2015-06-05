@@ -44,8 +44,10 @@ void Front::exec()
      * Quizas sea bueno crear un prototipo para los controladores ¿?.. salvo que el uso de using Namespace ::object::method funcione de pelos ¿?
      * {@see: http://stackoverflow.com/questions/4189682/calling-an-external-function-from-a-class-method}
 	 * Me parece que ésto es lo que más sentido tiene:
+	 * {@see: {@see: http://karthikpresumes.blogspot.com/2011/10/prototype-pattern-in-c-dynamic.html}}
 	 * {@link: http://www.cs.sjsu.edu/~pearce/modules/lectures/oop/types/reflection/prototype.htm}
 	 * Armar un Prototype Pattern de Controller para instanciarlo Dinamicamente.
+	 * Y un Factory method para construir el objeto desde la protoTable.
 	 * Entonces quedaria algo asi como:
 
 	 Controller* controller;

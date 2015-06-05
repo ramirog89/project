@@ -1,5 +1,11 @@
 #include "prototype/User.h"
 
+/** 
+ * Agrega el Objeto a la tabla de prototipos para estar disponible y ser
+ * consumido dinamicamente
+ */
+MAKE_PROTOTYPE(User);
+
 /**
  * Aca en teoria, tienen que venir todos los recursos
  * por ejemplo la uri:

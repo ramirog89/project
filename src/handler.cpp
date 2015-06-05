@@ -31,7 +31,7 @@ std::string Http::Handler::send()
 	// Headers: O->RESPONSE->getHeaders()?
 	/******** OUTPUT STRING *********
 	 * RESPUESTA DEL API
-	 * HTTP/1.1 (O->RESPONSE->getStatus()) statusMessage[status]
+	 * HTTP/1.1 (O->RESPONSE->getStatus()) O->RESPONSE->statusMessage[status]
 	 * Server: MiServer.. joajoas! A donde te conectaste wili
 	 * Date: (O->RESPONSE->getTime())
      * Content-Type: application/json (por lo pronto esta hardcodeado)
