@@ -10,7 +10,7 @@ using namespace Core;
 Http::Handler::Handler(std::string httpmessage)
 {
 	// if (this->_valid_http_request()) 
-	this->_request  = new Http::Request(httpmessage); //aca va solo la uri
+	this->_request  = new Http::Request(httpmessage);
     this->_response = new Http::Response();
 	// endif
 }
