@@ -40,20 +40,20 @@ http://www.hughes.com.au/products/libhttpd/libhttpd.pdf
 
 Leer las instancias de la clase HTTP para tratar al protocolo:
 
-0. @type Request
-0. httpGetConnection
-0. httpReadRequest
-0. httpProcessRequest
-0. @type Response
-0. httpOutput
-0. httpSetResponse
-0. httpSetCOntentType
-0. httpAddHeader
-0. httpSendHeaders
-0. httpUrlEncode
-0. httpRequestMethod (HEAD,POST,PUT,DELETE,GET)
-0. @type ErrorHandler
-0. httpSetErrorFunction (ClientError [400-417]|ServerError [500-505])
+0. ***@type Request***
+	0. httpGetConnection
+	0. httpReadRequest
+	0. httpProcessRequest
+0. ***@type Response***
+	0. httpOutput
+	0. httpSetResponse
+	0. httpSetCOntentType
+	0. httpAddHeader
+	0. httpSendHeaders
+	0. httpUrlEncode
+	0. httpRequestMethod (HEAD,POST,PUT,DELETE,GET)
+0. ***@type ErrorHandler***
+	0. httpSetErrorFunction (ClientError [400-417]|ServerError [500-505])
 
 ------------
 Para compilar la base de datos:
