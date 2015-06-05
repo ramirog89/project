@@ -1,22 +1,27 @@
 Server HTTP with Rest Api Integration
 =============
 
-Esta libreria abre un puerto para comunicarse via HTTP protocolo.
+Esta libreria abre un puerto para comunicarse via HTTP protocolo y resuelve
+la petición con un frontcontroller
 
 
-RestFULL API\n
-Support for\n
-HEAD POST PUT DELETE GET \n\n\n
+RestFULL API Support for:
+
+0. ***HEAD***
+0. ***POST***
+0. ***PUT***
+0. ***DELETE***
+0. ***GET***
 
 Lista de métodos HTTP soportados por el API HTTP Handler:
 
-0. 200 OK
-0. 302 Redirect
-0. 403 Forbidden
-0. 404 Not Found
-0. 405 Method Not Allowed
-0. 500 Server internal error
-0. 501 Not Implemented
+0. ***200 OK***
+0. ***302 Redirect***
+0. ***403 Forbidden***
+0. ***404 Not Found***
+0. ***405 Method Not Allowed***
+0. ***500 Server internal error***
+0. ***501 Not Implemented***
 
 COMMUNICATION VIA JSON STANDARD STRUCTURE
 ------
@@ -62,7 +67,7 @@ g++ -g -Wall -O0 src/database.cpp -I/usr/local/include/ -lpqxx -lpq -o data
 REST API
 -----------
 
-link: http://www.restapitutorial.com/lessons/restquicktips.html
+http://www.restapitutorial.com/lessons/restquicktips.html
 
 ```
 /users
@@ -103,12 +108,11 @@ ejemplo:
 
 
 ```
-Servicio : /users/:id/marks
+Servicio : ***/users/:id/marks***
 
 Array {
   UserObject : User =>
   {
-	//atributos del usuario
 	Array MarksObject => {
 		{		
 			MarkObject => { id : 1}
