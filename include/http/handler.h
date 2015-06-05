@@ -14,7 +14,7 @@ class Handler
         Request* _request;
         Response* _response;
 		
-		json::value _toJson(std::vector<char>)
+		void _toJson(pqxx::result) // esto no deberia recibir el result igual
 
     public:
         Handler(std::string); // init request y response.

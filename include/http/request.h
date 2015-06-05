@@ -25,7 +25,7 @@ class Request
 		void setHost(const char*);
 		void setRequestUri(std::string);
 		
-		const char* getVersion();
+		float getVersion();
 		const char* getUserAgent();
 		const char* getMethod();
 		const char* getHost();

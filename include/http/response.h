@@ -10,7 +10,7 @@ namespace Core {
 class Response
 {
     private:
-        std::vector<std::pair<int, std::string>> _statusMessages[7] = {
+        std::vector<std::pair<int, std::string> > _statusMessages = {
 			{200, "OK"},
 			{302, "Temprary redirect"},
 			{403, "Forbidden"},

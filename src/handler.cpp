@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-
+#include <pqxx/pqxx>
 #include "../include/http/request.h"
 #include "../include/http/response.h"
 #include "../include/http/handler.h"
@@ -56,7 +56,10 @@ std::string Http::Handler::send()
     return output;
 }
 
-json::value Http::Handler::_toJson(pqxx::result result)
+// Esto solo cargaria en el object Response.. al body
+// esto puede ser void o que retorne un string y fue..
+// serializeJson {@see: https://ventspace.wordpress.com/2012/10/08/c-json-serialization/}
+void Http::Handler::_toJson(pqxx::result result	)
 {
 	std::vector<res::json::value> arrayResult;
 	
@@ -78,5 +81,5 @@ json::value Http::Handler::_toJson(pqxx::result result)
 	
 	jsonBodyResponse["response"] = res::json::value::array(arrayResult);
 	
-	return jsonBodyResponse;
+	this->_response->setBody(jsonBodyResponse);
 }

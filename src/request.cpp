@@ -39,7 +39,7 @@ const char* Http::Request::getMethod()
 	return this->_method;
 }
 
-const char* Http::Request::getVersion()
+float Http::Request::getVersion()
 {
 	return this->_version;
 }
@@ -72,9 +72,4 @@ void Http::Request::setHost(const char* host)
 void Http::Request::setUserAgent(const char* userAgent)
 {
 	this->_user_agent = userAgent;
-}
-
-void setUri(std::string uri)
-{
-	this->_uri = uri;
 }

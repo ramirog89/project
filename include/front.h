@@ -9,22 +9,19 @@ class Front
         Http::Request* _request;
         Http::Response* _response;
 		
-        char _controller;
-        char _action;
-        char _args;
+        std::string _controller;
+        std::string _action;
+        std::vector<std::pair<std::string,std::string> > _args;
 		
         void _init();
-		
-        std::string _output;
-
     public:
         Front(Http::Request, Http::Response);
-        void setController(char);
-        char getController();
-        void setAction(char);
-        char getAction();
-        void setArgs(char);
-        char getArgs();
+        void setController(std::string);
+        std::string getController();
+        void setAction(std::string);
+        std::string getAction();
+        void setArgs(int);
+        std::vector<std::pair<std::string,std::string> > getArgs();
         void exec();
 };
 

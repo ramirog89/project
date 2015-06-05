@@ -1,5 +1,5 @@
 #include <string>
-
+#include <vector>
 #include "../include/http/request.h"
 #include "../include/http/response.h"
 #include "../include/front.h"
@@ -39,6 +39,9 @@ void Front::_init()
 
 void Front::exec()
 {
+	//local front output buffer
+	std::string output;
+	
     /**
      * {@see: http://www.cs.sjsu.edu/~pearce/modules/lectures/oop/types/reflection/prototype.htm}
      * Quizas sea bueno crear un prototipo para los controladores ¿?.. salvo que el uso de using Namespace ::object::method funcione de pelos ¿?
@@ -78,54 +81,59 @@ void Front::exec()
 	 switch(this->_request->getMethod()) // esto no esta nada mal tampoco
 	 {
 		case 'POST':
-			this->_output = (*controller)->post(this->_getArgs());
+			output = (*controller)->post(this->_getArgs());
 		break;
 		case 'PUT':
-			this->_output = (*controller)->put(this->_getArgs());
+			output = (*controller)->put(this->_getArgs());
 		break;
 		case 'DELETE':
-			this->_output = (*controller)->delete(this->_getArgs());
+			output = (*controller)->delete(this->_getArgs());
 		break;
 		case 'HEAD':
-			this->_output = (*controller)->head(this->_getArgs());
+			output = (*controller)->head(this->_getArgs());
 		break;
 		default:
-			this->_output = (*controller)->get(this->_getArgs());
+			output = (*controller)->get(this->_getArgs());
 		break;
 	 }
     */
 	
-    this->_output = "{ 'users' : [{ 'email' : 'ramirog89@gmail.com', 'password' : 'peperoni', 'user_id' : '1' }] }";
+    output = "{ 'users' : [{ 'email' : 'ramirog89@gmail.com', 'password' : 'peperoni', 'user_id' : '1' }] }";
 
-    this->_response->setBody(this->_output);
+    this->_response->setBody(output);
 }
 
-void Front::setController(char controller)
+void Front::setController(std::string controller)
 {
     this->_controller = controller;
 }
 
-void Front::setAction(char action)
+void Front::setAction(std::string action)
 {
     this->_action = action;
 }
 
-void Front::setArgs(char args)
+void Front::setArgs(int arrayArgs)
 {
-    this->_args = args;
+	// array iterator... push in _args
+	/*
+	arrayArgs::begin;
+		this->_args.push_back(arg[i])
+	arrayArgs::end;*/
+    this->_args = arrayArgs;
 }
 
-char Front::getController()
+std::string Front::getController()
 {
-    return _controller;
+    return this->_controller;
 }
 
-char Front::getAction()
+std::string Front::getAction()
 {
-    return _action;
+    return this->_action;
 }
 
-char Front::getArgs()
+std::vector<std::pair<std::string,std::string> > Front::getArgs()
 {
-    return _args;
+    return this->_args;
 }
