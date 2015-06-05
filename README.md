@@ -44,7 +44,7 @@ Leer las instancias de la clase HTTP para tratar al protocolo:
 0. httpGetConnection
 0. httpReadRequest
 0. httpProcessRequest
-0 .@type Response
+0. @type Response
 0. httpOutput
 0. httpSetResponse
 0. httpSetCOntentType
@@ -162,6 +162,7 @@ Solución a este problema:
 Implementación de ***Prototype Pattern*** y ***Factory Pattern***
 
 Ver: 
+
 0. http://www.cs.sjsu.edu/~pearce/modules/lectures/oop/types/reflection/prototype.htm
 0. http://stackoverflow.com/questions/4189682/calling-an-external-function-from-a-class-method
 0. http://karthikpresumes.blogspot.com/2011/10/prototype-pattern-in-c-dynamic.html
