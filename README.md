@@ -124,3 +124,45 @@ Array {
   }
 }
 ```
+
+
+-----------------------------------------
+
+EXTRAS
+---------
+
+***Reflection***
+-----
+Es la capacidad de obtener la informacion de un objeto en tiempo de ejecucion.
+Ver su tipo, sus metodos de invocacion, sus campos, esto es requerido cuando se quiere
+implementar codigo generico el cual pueda trabajar con tipos no conocidos de los objetos
+en el momento que se instancian.
+0. Hay muchas tareas en las que la refleccion puede ser usada: 
+	0. - Invocar metodos remotos
+	0. - Serializacion
+	0. - Dump de un objeto
+	0. - Interfaz de una base de datos
+Como funciona? : Dado un objeto, se pregunta su tipo,
+Como resultado, obtenemos un "descriptor de clase" que provee la informacino acerca de sus metodos y campos.
+
+Ver: http://www.garret.ru/cppreflection/docs/reflect.html
+
+***C++ no permite "Reflection"***
+-----
+Esto significa que no puedo hacer : 
+```
+controller->(*this->_getAction())
+```
+asi como si nada.. vamos a tener que implementarlo
+http://stackoverflow.com/questions/10668363/how-to-pass-method-name-in-variable
+
+***Instancia Dinamica de Objetcos @C++***
+-----
+Solución a este problema:
+Implementación de ***Prototype Pattern*** y ***Factory Pattern***
+
+Ver: 
+0. http://www.cs.sjsu.edu/~pearce/modules/lectures/oop/types/reflection/prototype.htm
+0. http://stackoverflow.com/questions/4189682/calling-an-external-function-from-a-class-method
+0. http://karthikpresumes.blogspot.com/2011/10/prototype-pattern-in-c-dynamic.html
+0. http://www.cs.sjsu.edu/~pearce/modules/lectures/oop/types/reflection/prototype.htm

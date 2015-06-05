@@ -56,9 +56,13 @@ std::string Http::Handler::send()
     return output;
 }
 
-// Esto solo cargaria en el object Response.. al body
-// esto puede ser void o que retorne un string y fue..
-// serializeJson {@see: https://ventspace.wordpress.com/2012/10/08/c-json-serialization/}
+/** 
+ * Esto solo cargaria en el object Response.. al body
+ * esto puede ser void o que retorne un string y fue..
+ * serializeJson {@see: https://ventspace.wordpress.com/2012/10/08/c-json-serialization/}
+ *
+ *  Hay que desacoplar al toJson del pqxx::result.. debe traer otra cosa, nose.. va hay que verlo
+ */
 void Http::Handler::_toJson(pqxx::result result	)
 {
 	std::vector<res::json::value> arrayResult;
