@@ -10,17 +10,7 @@ namespace Core {
 class Response
 {
     private:
-        std::vector<std::pair<int, std::string> > _statusMessages = {
-			{200, "OK"},
-			{302, "Temprary redirect"},
-			{403, "Forbidden"},
-			{404, "Not Found"},
-			{405, "Method Not Allowed"},
-			{500, "Internal Server Error"},
-			{501, "Not Implemented"},
-			{505, "HTTP Version not supported"}
-		};
-		
+        static const std::string _statusMessages[][2];  
         std::vector<int> _headers[];
 		int  _status;
 		std::string _body;

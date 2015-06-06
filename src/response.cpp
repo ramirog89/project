@@ -35,3 +35,15 @@ std::string Http::Response::getTime()
 
 	return ctime( &this->_response_time );
 }
+
+// No se puede definir un array estatico en el prototipo de una clase ni en un header file
+const std::string Http::Response::_statusMessages[][2] = {
+    {"200", "OK"},
+    {"302", "Temprary redirect"},
+    {"403", "Forbidden"},
+    {"404", "Not Found"},
+    {"405", "Method Not Allowed"},
+    {"500", "Internal Server Error"},
+    {"501", "Not Implemented"},
+    {"505", "HTTP Version not supported"}
+};
