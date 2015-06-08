@@ -76,7 +76,7 @@ void Front::exec()
 	 }
     */
 	
-	// el body aca va limpio, se hace json en el Handler 
+	// el body aca va limpio, se hace json en el Handler  
     output = "{ 'users' : [{ 'email' : 'ramirog89@gmail.com', 'password' : 'peperoni', 'user_id' : '1' }] }";
 	
     this->_response->setBody(output);
