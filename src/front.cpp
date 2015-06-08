@@ -102,9 +102,10 @@ void Front::setArgs(std::string stringArgs)
 	 */
 	size_t pos = 0;
 	std::string token;
-	while ((pos = s.find(delimiter))!= std::string::npos) {
-		token = s.substr(0, pos);
-		s.erase(0, pos + delimiter.length());
+	std::string delimiter = "/";
+	while ((pos = stringArgs.find(delimiter))!= std::string::npos) {
+		token = stringArgs.substr(0, pos);
+		stringArgs.erase(0, pos + delimiter.length());
 		this->_args.push_back(token);
 	}
 	this->_args.push_back(s);	
