@@ -25,65 +25,55 @@ Http::Response* Http::Handler::getResponse()
     return _response;
 }
 
+/******** OUTPUT STRING *********
+ *								*
+ * 		RESPUESTA DEL API		*
+ *								*
+ ********************************
+ *
+ * HTTP/1.1 (O->RESPONSE->getStatus()) O->RESPONSE->statusMessage[status]
+ * Server: MyServerApiRest
+ * Date: (O->RESPONSE->getTime())
+ * Content-Type: application/json
+ * Content-Length: O->RESPONSE->getBody().length()
+ * Allow: GET, PUT, DELETE, POST, HEAD
+ * \n\r
+ * this->_toJson( O->RESPONSE->getBody() )
+ *
+ *******************************/
 std::string Http::Handler::send()
 {
-	// Todo esto deberia venir de los headers?
-	// Headers: O->RESPONSE->getHeaders()?
-	/******** OUTPUT STRING *********
-	 * RESPUESTA DEL API
-	 * HTTP/1.1 (O->RESPONSE->getStatus()) O->RESPONSE->statusMessage[status]
-	 * Server: MiServer.. joajoas! A donde te conectaste wili
-	 * Date: (O->RESPONSE->getTime())
-     * Content-Type: application/json (por lo pronto esta hardcodeado)
-	 * Content-Length: O->RESPONSE->getBody().length()
-	 * Allow: GET, PUT, DELETE, POST, HEAD
-	 * \n\r
-	 * O->RESPONSE->getBody()
-	 *******************************/
-      	 
+    /*	 
     std::string output(
 	"HTTP/1.1 200 OK\n" // el
 	"Content-Type: application/json\n"
 	"Content-Length: 92\n" // aca va el body.length()
 	"\r\n"
 	"{ 'users' : [{ 'email' : 'ramirog89@gmail.com', 'password' : 'peperoni', 'user_id' : '1' }] }"
-	); // aca deberia ir el this->_toJson(body.str())
-
+	);
+	*/
+	
+	std::string content(this->_response->getBody());
+	
+	std::string output(
+	"HTTP/1.1 200 OK\n" // el
+	"Content-Type: application/json\n"
+	"Content-Length: 92\n" // aca va el body.length()
+	"\r\n"
+	+ content // append content
+	);
+	
     std::cout << output << std::endl;
-
-    //output.insert(output.length(), this->_response->getBody());
 
     return output;
 }
 
-/** 
- * Esto solo cargaria en el object Response.. al body
- * esto puede ser void o que retorne un string y fue..
- * serializeJson {@see: https://ventspace.wordpress.com/2012/10/08/c-json-serialization/}
- *
- *  Hay que desacoplar al toJson del pqxx::result.. debe traer otra cosa, nose.. va hay que verlo
- */
-void Http::Handler::_toJson(pqxx::result result	)
+
+/**
+* {@see: https://github.com/Loki-Astari/ThorsSerializer/tree/master/src/Serialize}
+* {@see: https://github.com/Mizuchi/acml}
+*/
+std::string Http::Handler::_toJson(pqxx::result result)
 {
-	std::vector<res::json::value> arrayResult;
-	
-	for (
-      pqxx::result::const_iterator row = result.begin();
-      row != result.end();
-      ++row)
-    {
-		res::json::value r;
-		
-		// ver como iterar campo y valor, also asi como un foreach o [0] y [1]
-		r["user_id"] = row["user_id"];
-		r["email"] = row["email"];
-		
-        arrayResult.push_back(r);
-    }
-	
-	res::json::value jsonBodyResponse;
-	
-	jsonBodyResponse["response"] = res::json::value::array(arrayResult);
-	
-	this->_response->setBody(jsonBodyResponse);
+
 }

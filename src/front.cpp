@@ -22,28 +22,37 @@ Front::Front(
  */
 void Front::_init()
 {
+	// @var uri.ej : /users/1431/marks/132
 	std::string original_uri = this->_request->getRequestUri();
+	
+	std::size_t to = original_uri.find("/");
+	original_uri.substr(0, to);
     
 	this->setController( 
-        original_uri.find(0, 'primeraparte')
+        original_uri.substr(0, to)
     );
-    this->setAction( 
-        original_uri.find(10, 'action')
+	
+	//original_uri.find(10, 'action')
+	// por lo pronto es put/del/get/head/post
+    this->setAction(
+		this->_request->getMethod()
     );
-    this->setArgs( 
-        original_uri.find(30, 'lodemas')
+	
+	// todo lo demas despues del controller.. o primer "/"
+    this->setArgs(
+        original_uri.substr(to);
     );
 }
 
 void Front::exec()
 {
-	//local front output buffer
+	//local output buffer
 	std::string output;
 	
     /**
 	 * {@see: {@see: http://karthikpresumes.blogspot.com/2011/10/prototype-pattern-in-c-dynamic.html}}
 	 * {@link: http://www.cs.sjsu.edu/~pearce/modules/lectures/oop/types/reflection/prototype.htm}
-
+	 *
 	 Controller* controller;
    	 controller = Controller::makeController(this->_getController());
 		
@@ -67,8 +76,9 @@ void Front::exec()
 	 }
     */
 	
+	// el body aca va limpio, se hace json en el Handler 
     output = "{ 'users' : [{ 'email' : 'ramirog89@gmail.com', 'password' : 'peperoni', 'user_id' : '1' }] }";
-
+	
     this->_response->setBody(output);
 }
 
@@ -82,18 +92,23 @@ void Front::setAction(std::string action)
     this->_action = action;
 }
 
-void Front::setArgs(int arrayArgs)
+void Front::setArgs(std::string stringArgs)
 {
-	// array iterator... push in _args
-	// Adentro puede tener un struct keyValuePar { std::string key, std::string value } ??
-	/* {@see: http://www.cplusplus.com/reference/array/array/begin/}
-	for ( auto it = arrayArgs.begin(); it != arrayArgs.end(); ++it )
-		this->_args.push_back(*it);
+	/**
+	 * http://stackoverflow.com/questions/890164/how-can-i-split-a-string-by-a-delimiter-into-an-array
+	 * Ejemplo de split string to vector
+	 * Aun falta hacerlo del tipo std::pair<string,string>
+	 * this->_args['marks'] = 1234 | por ejemplo
+	 */
+	size_t pos = 0;
+	std::string token;
+	while ((pos = s.find(delimiter))!= std::string::npos) {
+		token = s.substr(0, pos);
+		s.erase(0, pos + delimiter.length());
+		this->_args.push_back(token);
+	}
+	this->_args.push_back(s);	
 	
-	arrayArgs::begin;
-		this->_args.push_back(arg[i])
-	arrayArgs::end;*/
-    this->_args = arrayArgs;
 }
 
 std::string Front::getController()
@@ -106,7 +121,7 @@ std::string Front::getAction()
     return this->_action;
 }
 
-std::vector<std::pair<std::string,std::string> > Front::getArgs()
+std::vector<std::string> Front::getArgs()
 {
     return this->_args;
 }

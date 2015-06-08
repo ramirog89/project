@@ -4,6 +4,7 @@
 #include "../include/http/response.h"
 
 using namespace Core;
+// Probar...: using namespace Core::Http
 
 void Http::Response::setBody(std::string body)
 {

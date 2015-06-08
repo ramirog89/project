@@ -25,9 +25,9 @@ Controller* Controller::makeController(std::string type)
 // Agrega un Controlador a la tabla del Prototipo para poder ser consumido dinamicamente
 Controller* Controller::addPrototype(std::string type, Controller* c)
 {
-	cout << "adding prototype for " << type << endl;
+	std::cout << "adding prototype for " << type << endl;
 	Controller::protoTable[type] = c;
-	cout << "done\n";
+	std::cout << "done\n";
 	
 	return c; // handy
 }

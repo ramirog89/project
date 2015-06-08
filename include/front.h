@@ -20,8 +20,8 @@ class Front
         std::string getController();
         void setAction(std::string);
         std::string getAction();
-        void setArgs(int);
-        std::vector<std::pair<std::string,std::string> > getArgs();
+        void setArgs(std::string);
+        std::vector<std::string> getArgs();
         void exec();
 };
 
