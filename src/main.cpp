@@ -1,5 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <signal.h>
+
 #include <iostream>
 #include <string>
 
@@ -14,6 +16,18 @@ using namespace Core;
 
 int main(int argc, char *argv[])
 {
+	/**
+	 *
+	 *{@see: http://www.cplusplus.com/reference/csignal/signal/}
+	 *{@see: http://pubs.opengroup.org/onlinepubs/009695399/basedefs/signal.h.html}
+	 *
+	 * @description: Por cada child que se usa, ignorar el signal del mismo
+	 
+	 * @param SIGCHILD = Child Process terminated, stopped
+	 * @param SIG_IGN = Ignora el proceso child
+	 */
+	signal(SIGCHLD,SIG_IGN);	
+	
     Server * server;
     Http::Handler * http;
     Front * front;

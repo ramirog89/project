@@ -1,5 +1,8 @@
-Server HTTP with Rest Api Integration
+RPC Server HTTP with Rest Api Integration
 =============
+
+***RPC:*** https://technet.microsoft.com/en-us/library/cc787851%28v=ws.10%29.aspx
+
 
 Esta libreria abre un puerto para comunicarse via HTTP protocolo y resuelve
 la petición con un frontcontroller
@@ -167,3 +170,35 @@ Ver:
 0. http://stackoverflow.com/questions/4189682/calling-an-external-function-from-a-class-method
 0. http://karthikpresumes.blogspot.com/2011/10/prototype-pattern-in-c-dynamic.html
 0. http://www.cs.sjsu.edu/~pearce/modules/lectures/oop/types/reflection/prototype.htm
+
+-----------------------------------------
+
+***MultiThread vs MultiTask***
+---------
+
+0. Referencias
+	0. http://yoda.arachsys.com/csharp/threads/whentouse.shtml
+	0. http://www.cpp-home.com/tutorials/128_1.htm
+	0. Imagen MultiHttpThreadFlow : https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fwww3.nd.edu%2F~dthain%2Fcourses%2Fcse30341%2Fspring2009%2Fproject4%2Fmulti.gif&f=1
+	0. http://www.cpp-home.com/tutorials/128_1.htm
+	0. http://research.cs.wisc.edu/shore/1.0/ssmvas/node5.html
+	0. https://images.duckduckgo.com/iu/?u=http%3A%2F%2Frandu.org%2Ftutorials%2Fthreads%2Fimages%2Fprocess.png&f=1
+0. Diferencias entre MultiHilo y MultiProceso
+	0. http://www.differencebetween.net/miscellaneous/difference-between-thread-and-process/
+	0. http://www.programmerinterview.com/index.php/operating-systems/thread-vs-process/
+	0. http://stackoverflow.com/questions/200469/what-is-the-difference-between-a-process-and-a-thread
+0. FlowDiagram MultiThread WebServer
+	0. http://stackoverflow.com/questions/12850059/multithreaded-web-server-flow-diagram
+	0. ServerC++ ejemplo MultiHilo: http://www.cplusplus.com/forum/unices/116977/
+0. Ejemplos de servidores:
+	0. http://www.codeproject.com/Articles/7785/Single-Server-With-Multiple-Clients-a-Simple-C-Imp
+	0. http://www.rohitab.com/discuss/topic/26991-cc-how-to-code-a-multi-client-server-in-c-using-threads/
+ 
+C++ Multitask usa Fork para crear un proceso por Request
+C++ Uso de thread para crear un hilo por Request..
+
+
+Muchadata: http://www.bogotobogo.com/cplusplus/sockets_server_client.php
+ 
+RPC Server Followed by: http://www.linuxhowtos.org/C_C++/socket.htm
+

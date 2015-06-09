@@ -7,10 +7,6 @@
 #include <netinet/in.h> // estructura de los address_SOCKS
 #include "../include/server.h"
 
-/**
- * Aca se define la implementación de la clase..
- **/
-
 using namespace Core;
 
 Server::Server(int port) 
