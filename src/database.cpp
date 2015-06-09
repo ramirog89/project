@@ -9,7 +9,7 @@ Database::Database()
 
 void Database::connect()
 {
-	pqxx::connection c("dbname=prueba user=ramiro password=c4c4fr1t489");
+	pqxx::connection c("dbname=__DB__ user=__USER__ password=__PASS__");
     pqxx::work txn(c);
 }
 
