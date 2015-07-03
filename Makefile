@@ -1,6 +1,7 @@
 CC = g++
+#CFLAGS = -Wall -Wextra -g -O0
 CFLAGS = -Wall -g -O0
-LDFLAGS = -lm
+LDFLAGS = -lm 
 
 #DEP = $(OBJ:%.o=%.d)
 

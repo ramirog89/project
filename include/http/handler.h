@@ -4,8 +4,6 @@
 namespace Core {
     namespace Http {
 
-typedef 
-
 class Handler
 {
     private: 
@@ -14,7 +12,7 @@ class Handler
         Request* _request;
         Response* _response;
 		
-		void _toJson(pqxx::result) // esto no deberia recibir el result igual
+		void _toJson(pqxx::result); // esto no deberia recibir el result igual
 
     public:
         Handler(std::string); // init request y response.

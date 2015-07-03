@@ -1,3 +1,4 @@
+#include <iostream>
 #include <string>
 #include <vector>
 #include "../include/http/request.h"
@@ -27,6 +28,9 @@ void Front::_init()
 	
 	std::size_t to = original_uri.find("/");
 	original_uri.substr(0, to);
+
+    std::cout << to << std::endl;
+    std::cout << original_uri << std::endl;
     
 	this->setController( 
         original_uri.substr(0, to)
@@ -40,7 +44,7 @@ void Front::_init()
 	
 	// todo lo demas despues del controller.. o primer "/"
     this->setArgs(
-        original_uri.substr(to);
+        original_uri.substr(to)
     );
 }
 
@@ -108,8 +112,6 @@ void Front::setArgs(std::string stringArgs)
 		stringArgs.erase(0, pos + delimiter.length());
 		this->_args.push_back(token);
 	}
-	this->_args.push_back(s);	
-	
 }
 
 std::string Front::getController()

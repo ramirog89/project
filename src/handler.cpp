@@ -73,7 +73,7 @@ std::string Http::Handler::send()
 * {@see: https://github.com/Loki-Astari/ThorsSerializer/tree/master/src/Serialize}
 * {@see: https://github.com/Mizuchi/acml}
 */
-std::string Http::Handler::_toJson(pqxx::result result)
+void Http::Handler::_toJson(pqxx::result result)
 {
-
+    
 }

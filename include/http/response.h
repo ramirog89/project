@@ -11,13 +11,13 @@ class Response
 {
     private:
         static const std::string _statusMessages[][2];  
-        std::vector<int> _headers[];
+//        std::vector<int> _headers[];
 		int  _status;
 		std::string _body;
 		time_t _response_time;
     public:
-        void setHeader(char);
-        char getHeader(int);
+//        void setHeader(char);
+//        char getHeader(int);
         void setBody(std::string);
         std::string getBody();
 		void setStatus(int);

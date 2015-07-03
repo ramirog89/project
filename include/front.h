@@ -11,7 +11,7 @@ class Front
 		
         std::string _controller;
         std::string _action;
-        std::vector<std::pair<std::string,std::string> > _args;
+        std::vector<std::string> _args;
 		
         void _init();
     public:

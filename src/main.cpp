@@ -14,7 +14,8 @@ using namespace Core;
 
 #define DEFAULT_PORT 51517;
 
-int main(int argc, char *argv[])
+//int main(int argc, char *argv[]) warning of unused vars argc and argv
+int main()
 {
 	/**
 	 *
@@ -43,15 +44,15 @@ int main(int argc, char *argv[])
 
     // Si estuvo todo bien
     if (status) {
-        // Ponemos a escuchar al servidor
-        std::string response(server->listensock()); // constructor de char* a string..
+        // Ponemos a escuchar al servidor (open request -> solicitud)
+        std::string request(server->listensock()); // constructor de char* a string..
 
         // Quedaria mas proligo si aca se pone el while?...     
         // y el listen sock queda solo como void?..
 
-        if (!response.empty()) { 
+        if (!request.empty()) { 
             // inicializamos el HTTP Handler Lee HTTP y responde HTTP
-            http = new Core::Http::Handler( response ); // probablemente sea un singleton
+            http = new Core::Http::Handler( request ); // probablemente sea un singleton
 
             // Se instancia el front si el http request fue valido ...
             front = new Front(
